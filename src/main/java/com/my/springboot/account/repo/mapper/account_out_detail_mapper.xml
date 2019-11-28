@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.springboot.account.repo.AccountOutDetailMapper">
+    <resultMap type="com.my.springboot.account.dto.AccountOutDetail" id="accountOutDetailMap">
+        <id column="id" property="id"/>
+        <result column="out_funds" property="outFunds"/>
+        <result column="out_users" property="outUsers"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <select id="selectAccountOutDetail" resultMap="accountOutDetailMap" parameterType="int">
+        select * from account_out_detail where id=#{id}
+    </select>
+    <select id="selectList" resultMap="accountOutDetailMap" parameterType="com.my.springboot.account.vo.AccountSearchVo">
+        select * from account_out_detail
+        <where>
+            <bind name="outUsers" value="'%' + accountSearchVo.getOutUsers() + '%'" />
+            <if test="outUsers != null">
+                out_users like #{outUsers}
+            </if>
+            <if test="startDate != null">
+                AND create_time > #{accountSearchVo.getStartDate()}
+            </if>
+            <if test="endDate != null">
+                AND create_time > #{accountSearchVo.getStartDate()}
+            </if>
+        </where>
+    </select>
+
+</mapper>

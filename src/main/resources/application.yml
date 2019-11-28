@@ -37,3 +37,14 @@ spring:
       log-slow-sql: true
       public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAOclQrPeCT+uuuOI/eEEt6izDwBIPk+bTeR471om1RQZCU6mr+P/gWiycgb+dsm9XpiJQjNZvuBOaF8fljwHe1cCAwEAAQ==
       connection-properties: druid.stat.mergeSql=true,druid.stat.slowSqlMillis=5000;config.decrpt=true
+
+mybatis:
+  mapper-locations: classpath:com/my/springboot/account/repo/mapper/*.xml
+  type-aliases-package: com.my.springboot.account.dto  # 注意：对应实体类的路径
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

@@ -1,11 +1,12 @@
-package com.my.springboot.myspringboot;
+package com.my.springboot.account;
 
-import org.springframework.boot.SpringApplication;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
+//@MapperScan(value = "com.my.springboot.account.repo")
 public class MySpringbootApplication {
 
     public static void main(String[] args) {
